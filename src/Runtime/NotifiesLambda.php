@@ -43,7 +43,7 @@ trait NotifiesLambda
      */
     protected function lambdaRequest($url, $data)
     {
-        $json = json_encode($data);
+        $json = json_encode($data, JSON_INVALID_UTF8_IGNORE|JSON_INVALID_UTF8_SUBSTITUTE);
 
         if ($json === false) {
             throw new Exception('Error encoding runtime JSON response: '.json_last_error_msg());
